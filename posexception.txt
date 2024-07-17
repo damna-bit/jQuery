@@ -1,0 +1,40 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+
+class PositiveNumberException extends Exception {
+    public PositiveNumberException(String message) {
+        super(message);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        String filePath = "numbers.txt"; 
+
+        try {
+            Scanner scanner = new Scanner(new File(filePath));
+
+            while (scanner.hasNext()) {
+                if (scanner.hasNextInt()) {
+                    int number = scanner.nextInt();
+                    if (number > 0) {
+                        scanner.close(); 
+                        throw new PositiveNumberException("Positive number found: " + number);
+                    } else {
+                        System.out.println("Read number: " + number);
+                    }
+                } else {
+                    scanner.next(); 
+                }
+            }
+
+            scanner.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found: " + filePath);
+        } catch (PositiveNumberException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}

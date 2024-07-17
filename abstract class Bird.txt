@@ -1,0 +1,49 @@
+abstract class Bird {
+    
+    abstract void fly();
+    abstract void makeSound();
+}
+
+class Eagle extends Bird {
+   
+    
+    void fly() {
+        System.out.println("The eagle soars high in the sky with powerful wings.");
+    }
+
+
+    void makeSound() {
+        System.out.println("The eagle makes a loud screeching sound.");
+    }
+}
+
+class Hawk extends Bird {
+    
+    
+    void fly() {
+        System.out.println("The hawk glides gracefully and dives swiftly.");
+    }
+
+ 
+    void makeSound() {
+        System.out.println("The hawk emits a sharp, piercing cry.");
+    }
+}
+
+public class BirdTest {
+    public static void main(String[] args) {
+        
+        Bird eagle = new Eagle();
+        Bird hawk = new Hawk();
+
+    
+        System.out.println("Eagle:");
+        eagle.fly();
+        eagle.makeSound();
+
+        
+        System.out.println("Hawk:");
+        hawk.fly();
+        hawk.makeSound();
+    }
+}

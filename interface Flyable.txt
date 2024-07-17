@@ -1,0 +1,41 @@
+interface Flyable {
+    void fly_obj();
+}
+
+class Spacecraft implements Flyable {
+    @Override
+    public void fly_obj() {
+        System.out.println("The spacecraft launches into space using rocket engines.");
+    }
+}
+
+class Airplane implements Flyable {
+    @Override
+    public void fly_obj() {
+        System.out.println("The airplane flies through the air using jet engines and wings.");
+    }
+}
+
+class Helicopter implements Flyable {
+    @Override
+    public void fly_obj() {
+        System.out.println("The helicopter hovers and moves through the air using rotating blades.");
+    }
+}
+
+public class FlyableTest {
+    public static void main(String[] args) {
+        Flyable spacecraft = new Spacecraft();
+        Flyable airplane = new Airplane();
+        Flyable helicopter = new Helicopter();
+
+        System.out.println("Spacecraft:");
+        spacecraft.fly_obj();
+
+        System.out.println("Airplane:");
+        airplane.fly_obj();
+
+        System.out.println("Helicopter:");
+        helicopter.fly_obj();
+    }
+}

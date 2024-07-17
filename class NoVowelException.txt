@@ -1,0 +1,28 @@
+class NoVowelException extends Exception {
+    public NoVowelException(String message) {
+        super(message);
+    }
+}
+
+public class VowelChecker {
+
+    public static void checkForVowels(String input) throws NoVowelException {
+        if (input == null || !input.matches(".*[AEIOUaeiou].*")) {
+            throw new NoVowelException("The string does not contain any vowels: " + input);
+        } else {
+            System.out.println("The string contains vowels: " + input);
+        }
+    }
+
+    public static void main(String[] args) {
+        String[] testStrings = {"Hello", "Sky", "Morning", "Myth", "Gym"};
+
+        for (String str : testStrings) {
+            try {
+                checkForVowels(str);
+            } catch (NoVowelException e) {
+                System.err.println(e.getMessage());
+            }
+        }
+    }
+}

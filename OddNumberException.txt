@@ -1,0 +1,28 @@
+class OddNumberException extends Exception {
+    public OddNumberException(String message) {
+        super(message);
+    }
+}
+
+public class OddNumberChecker {
+
+    public static void checkEvenNumber(int number) throws OddNumberException {
+        if (number % 2 != 0) {
+            throw new OddNumberException("Exception!!! The number " + number + " is odd.");
+        } else {
+            System.out.println("The number " + number + " is even.");
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] numbers = {2, 3, 4, 5, 6, 7, 8};
+
+        for (int number : numbers) {
+            try {
+                checkEvenNumber(number);
+            } catch (OddNumberException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+}

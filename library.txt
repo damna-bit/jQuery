@@ -1,0 +1,104 @@
+import java.util.ArrayList;
+import java.util.List;
+
+
+class Book {
+    private String title;
+    private String author;
+
+    public Book(String title, String author) {
+        this.title = title;
+        this.author = author;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+
+    public String toString() {
+        return "Title: " + title + ", Author: " + author;
+    }
+}
+
+
+public class Library {
+    private String libraryName;
+    private List<Book> books;
+
+    public Library(String libraryName) {
+        this.libraryName = libraryName;
+        this.books = new ArrayList<>();
+    }
+
+
+    public void addBook(String title, String author) {
+        Book newBook = new Book(title, author);
+        books.add(newBook);
+        System.out.println("Added book: " + newBook);
+    }
+
+
+    public void searchByTitle(String title) {
+        boolean found = false;
+        for (Book book : books) {
+            if (book.getTitle().equalsIgnoreCase(title)) {
+                System.out.println("Book found: " + book);
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("Book with title '" + title + "' not found.");
+        }
+    }
+
+
+    public void searchByAuthor(String author) {
+        boolean found = false;
+        for (Book book : books) {
+            if (book.getAuthor().equalsIgnoreCase(author)) {
+                System.out.println("Book found: " + book);
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("No books found for author '" + author + "'.");
+        }
+    }
+
+
+    public void displayBooks() {
+        if (books.isEmpty()) {
+            System.out.println("Library is empty. No books to display.");
+        } else {
+            System.out.println("Books in library '" + libraryName + "':");
+            for (Book book : books) {
+                System.out.println(book);
+            }
+        }
+    }
+
+
+    public static void main(String[] args) {
+        Library library = new Library("City Library");
+
+
+        library.addBook("Hamlet", "Shakesphere");
+        library.addBook("One Indian girl", "Chetan Bhagat");
+        library.addBook("War and peace", "Tolstoy");
+
+
+        library.displayBooks();
+
+    
+        library.searchByTitle("Hamlet");
+
+   
+        library.searchByAuthor("Tolstoy");
+        library.searchByAuthor("Anna Karenina");
+    }
+}

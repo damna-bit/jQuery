@@ -1,0 +1,55 @@
+public class Car {
+
+    private String make;
+    private String model;
+    private int year;
+    private boolean isRunning;
+
+
+    public Car(String make, String model, int year) {
+        this.make = make;
+        this.model = model;
+        this.year = year;
+        this.isRunning = false; 
+    }
+
+   
+
+    public void start() {
+        if (!isRunning) {
+            isRunning = true;
+            System.out.println("The car has started.");
+        } else {
+            System.out.println("The car is already running.");
+        }
+    }
+
+
+
+    public void stop() {
+        if (isRunning) {
+            isRunning = false;
+            System.out.println("The car has stopped.");
+        } else {
+            System.out.println("The car is already stopped.");
+        }
+    }
+
+
+
+    public void displayInfo() {
+        System.out.println("Car Information:");
+        System.out.println("Make: " + make);
+        System.out.println("Model: " + model);
+        System.out.println("Year: " + year);
+    }
+
+
+
+    public static void main(String[] args) {
+        Car myCar = new Car("Mercedes", "S-class", 2024);
+        myCar.displayInfo();
+        myCar.start();
+        myCar.stop();
+    }
+}

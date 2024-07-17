@@ -1,0 +1,43 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+
+class EmptyFileException extends Exception {
+    public EmptyFileException(String message) {
+        super(message);
+    }
+}
+
+public class FileReader {
+    public static void main(String[] args) {
+        String fileName = "java.txt"; 
+
+        try {
+            checkFile(fileName);
+            System.out.println("File is not empty and has been read successfully.");
+        } catch (FileNotFoundException e) {
+            System.err.println("File not found: " + fileName);
+        } catch (EmptyFileException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
+    
+    public static void checkFile(String fileName) throws FileNotFoundException, EmptyFileException {
+        File file = new File(fileName);
+        Scanner scanner = new Scanner(file);
+
+        if (!scanner.hasNextLine()) {
+            scanner.close();
+            throw new EmptyFileException("The file " + fileName + " is empty.");
+        }
+
+     
+        while (scanner.hasNextLine()) {
+            System.out.println(scanner.nextLine());
+        }
+
+        scanner.close();
+    }
+}
